@@ -8,23 +8,29 @@
     android:background="#0C191D"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="236dp"
-        android:layout_height="396dp"
-        app:srcCompat="@drawable/mortezhootlogo"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="92dp" />
+        android:layout_width="330dp"
+        android:layout_height="495dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonstart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/mortezhootlogo" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="114dp"
-        android:layout_height="76dp"
+        android:id="@+id/buttonstart"
+        android:layout_width="211dp"
+        android:layout_height="68dp"
         android:backgroundTint="#3798A3"
+        android:fontFamily="@font/exo"
         android:text="Comenzar"
-        android:fontFamily=""
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="474dp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
