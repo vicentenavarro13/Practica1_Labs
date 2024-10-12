@@ -94,12 +94,7 @@ public class ReviewActivity extends AppCompatActivity {
             selectedImageView.setImageResource((int) selected);  // Establecer la imagen seleccionada
         }
 
-        // Mostrar la respuesta correcta (si es texto o imagen)
-        if (correct instanceof String) {
-            feedbackText.append("\nRespuesta Correcta: " + correct);
-        } else if (correct instanceof Integer) {
-            feedbackText.append("\nRespuesta Correcta: Imagen mostrada");
-        }
+
 
         // Actualizar la puntuación
         scoreText.setText("Puntuación: " + score);
