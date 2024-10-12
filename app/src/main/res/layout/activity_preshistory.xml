@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,8 +11,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="414dp"
-        android:layout_height="86dp"
+        android:layout_width="419dp"
+        android:layout_height="64dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#8AD1D6"
         android:minHeight="?attr/actionBarSize"
@@ -19,97 +21,104 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:backgroundTint="#8AD1D6"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="259dp"
-        android:layout_height="87dp"
+        android:layout_width="281dp"
+        android:layout_height="53dp"
         app:srcCompat="@drawable/mortezlogo"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="-1dp" />
-
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="4dp" />
 
     <TextView
         android:id="@+id/questionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/exo"
         android:text="Pregunta"
-        android:textSize="24sp"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+
+    <ImageView
+        android:id="@+id/questionImageView"
+        android:layout_width="400dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="160dp"
+        android:visibility="gone" />
 
 
     <Button
         android:id="@+id/option1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/exo"
         android:text="Opción 1"
-        app:layout_constraintTop_toBottomOf="@id/questionText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/questionText" />
 
     <Button
         android:id="@+id/option2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/exo"
         android:text="Opción 2"
-        app:layout_constraintTop_toBottomOf="@id/option1"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option1" />
 
     <Button
         android:id="@+id/option3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/exo"
         android:text="Opción 3"
-        app:layout_constraintTop_toBottomOf="@id/option2"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option2" />
 
     <Button
         android:id="@+id/option4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opción 3"
-        app:layout_constraintTop_toBottomOf="@id/option2"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/exo"
+        android:text="Opción 4"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option2" />
 
     <Button
         android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/exo"
         android:text="Confirmar"
-        app:layout_constraintTop_toBottomOf="@id/option3"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option3" />
 
     <TextView
         android:id="@+id/feedbackText"
@@ -117,6 +126,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
+        android:fontFamily="@font/exo"
         app:layout_constraintTop_toBottomOf="@id/confirmButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,20 +139,12 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
+        android:fontFamily="@font/exo"
         app:layout_constraintTop_toBottomOf="@id/feedbackText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <ImageView
-        android:id="@+id/questionImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

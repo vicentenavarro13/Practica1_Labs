@@ -21,24 +21,24 @@ public class PrehistoryActivity extends AppCompatActivity {
             "¿Qué herramienta usaban los primeros seres humanos para cazar?",
             "¿Qué era la Edad de Piedra?",
             "¿Cuándo comenzaron los humanos a practicar la agricultura?",
-            "¿Quién fue el primer ser humano en caminar erguido?",
-            "¿Qué animales fueron domesticados por los seres humanos en la prehistoria?"
+            "¿Que tipo de arte rupestre se encuentra en Altamira?",
+            "¿Cuál es el nombre de la siguiente herramienta usada en la prehistoria?"
     };
 
     private Object[][] options = {
             {"Lanzas", "Arcos", "Espadas", "Cuchillos"},
             {"Un período de glaciación", "Un periodo de cambio climático", "Un período en el que los humanos usaban piedras para fabricar herramientas", "Un periodo de grandes guerras"},
             {"Hace 500 años", "Hace 10,000 años", "Hace 2,000 años", "Hace 1,000 años"},
-            {"Homo sapiens", "Homo habilis", "Homo erectus", "Homo neanderthalensis"},
-            {"Perros y gatos", "Caballos y vacas", "Leones y tigres", "Elefantes y rinocerontes"}
+            {"Animales pintados en las paredes", "Esculturas talladas en piedra", "Representaciones de figuras humanas", "Escritura jeroglífica"},
+            {"Lanza", "Cuchillo de hueso ", "Bifaz", "Raspador de piedra"}
     };
 
     private Object[] correctAnswers = {
             "Lanzas",
             "Un período en el que los humanos usaban piedras para fabricar herramientas",
             "Hace 10,000 años",
-            "Homo erectus",
-            "Perros y gatos"
+            "Animales pintados en las paredes",
+            "Bifaz"
     };
 
     private int currentQuestion = 0;
@@ -51,8 +51,8 @@ public class PrehistoryActivity extends AppCompatActivity {
             0, // No hay imagen para la pregunta 1
             0, // No hay imagen para la pregunta 2
             0, // No hay imagen para la pregunta 3
-            0, // No hay imagen para la pregunta 4
-            0  // No hay imagen para la pregunta 5
+            0, // Hay imagen para la pregunta 4
+            R.drawable.piedra  // Hay imagen para la pregunta 5
     };
 
     @Override
@@ -124,7 +124,7 @@ public class PrehistoryActivity extends AppCompatActivity {
         if (questionImages[currentQuestion] != 0) {
             questionImageView.setImageResource(questionImages[currentQuestion]);
             questionImageView.setVisibility(View.VISIBLE);  // Hacer visible la imagen
-            questionImageView.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
+
         } else {
             questionImageView.setVisibility(View.GONE);  // Ocultar la imagen si no hay
         }
