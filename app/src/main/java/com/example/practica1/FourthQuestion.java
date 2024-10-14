@@ -3,6 +3,8 @@ package com.example.practica1;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -81,12 +83,36 @@ public class FourthQuestion extends Fragment {
         option3.setText("Ares");
         option4.setText("Neptuno");
 
+        AnswersViewModel viewModel = new ViewModelProvider(requireActivity()).get(AnswersViewModel.class);
+        viewModel.getArray().observe(getViewLifecycleOwner(), new Observer<int[]>() {
+            @Override
+            public void onChanged(int[] answers) {
+                if (answers != null) {
+                    // Acceder a una posición específica, por ejemplo, la posición 2
+                    int option = answers[3];
+                    switch (option){
+                        case 1:
+                            option1.setChecked(true);
+                            break;
+                        case 2:
+                            option2.setChecked(true);
+                            break;
+                        case 3:
+                            option3.setChecked(true);
+                            break;
+                        case 4:
+                            option4.setChecked(true);
+                            break;
+                    }
+                }
+            }
+        });
 
-
-        Button back_btn = view.findViewById(R.id.buttonNext);
+        Button back_btn = view.findViewById(R.id.buttonBack);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                viewModel.actualizarElemento(3,optionSelected);
                 Navigation.findNavController(view).navigate(R.id.thirdQuestion);
             }
         });

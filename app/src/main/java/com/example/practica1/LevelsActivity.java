@@ -27,7 +27,9 @@ public class LevelsActivity extends AppCompatActivity {
         ancient_age.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int[] answers = {-1, -1, -1, -1, -1};
                 Intent intent = new Intent(LevelsActivity.this, AncientAgeActivity.class);
+                intent.putExtra("answers", answers);
                 startActivity(intent);
             }
         });
