@@ -73,7 +73,7 @@
 
     <!-- Botón Edad Antigua -->
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonAncientAge"
         android:layout_width="214dp"
         android:layout_height="49dp"
         android:backgroundTint="#365E69"
@@ -91,7 +91,7 @@
         android:backgroundTint="#365E69"
         android:fontFamily="@font/exo"
         android:text="Edad Media"
-        app:layout_constraintTop_toBottomOf="@id/button2"
+        app:layout_constraintTop_toBottomOf="@id/buttonAncientAge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

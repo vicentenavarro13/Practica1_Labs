@@ -22,6 +22,16 @@ public class LevelsActivity extends AppCompatActivity {
             }
         });
 
+        Button ancient_age = findViewById(R.id.buttonAncientAge);
+
+        ancient_age.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LevelsActivity.this, AncientAgeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
