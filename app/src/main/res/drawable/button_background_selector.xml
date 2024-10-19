@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Estado cuando el botón está presionado (similar al hover en pantallas táctiles) -->
+
     <item android:state_pressed="true" android:drawable="@color/colorButtonPressed" />
 
-    <!-- Estado cuando el botón está deshabilitado -->
     <item android:state_enabled="false" android:drawable="@color/colorButtonDisabled" />
 
-    <!-- Estado normal (sin estar presionado o seleccionado) -->
+ ->
     <item android:drawable="@color/colorButtonNormal" />
 </selector>

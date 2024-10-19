@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#0C191D">
 
-    <!-- Toolbar superior -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -19,11 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Logo ImageView -->
-
-    <!-- Título TEMAS -->
-
-    <!-- ListView para los botones -->
 
     <ImageView
         android:id="@+id/imageView2"
@@ -48,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView2" />
 
-    <!-- Botón para desplegar los niveles -->
+
     <Button
         android:id="@+id/expandButton"
         android:layout_width="wrap_content"
@@ -62,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView" />
 
-    <!-- ListView para los botones (inicialmente oculto) -->
+
     <ListView
         android:id="@+id/levelsListView"
         android:layout_width="0dp"

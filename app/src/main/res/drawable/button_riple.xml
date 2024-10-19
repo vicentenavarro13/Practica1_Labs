@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/colorButtonPressed"> <!-- Color de la ondulación cuando se presiona el botón -->
+    android:color="@color/colorButtonPressed">
 
-    <!-- Fondo normal del botón -->
+
     <item android:drawable="@color/colorButtonNormal" />
 
-    <!-- Máscara para limitar el efecto de ondulación -->
+
     <item android:id="@android:id/mask" android:drawable="@color/colorButtonMask" />
 </ripple>
