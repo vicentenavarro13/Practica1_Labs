@@ -1,5 +1,6 @@
 package com.example.practica1;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -77,6 +78,16 @@ public class SecondQuestion extends Fragment {
         RadioButton option2 = view.findViewById(R.id.radio_2);
         RadioButton option3 = view.findViewById(R.id.radio_3);
         RadioButton option4 = view.findViewById(R.id.radio_4);
+        Button exitButton = view.findViewById(R.id.exit);
+
+
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LevelsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         option1.setText("Código de Hammurabi");
         option2.setText("Derecho Canónico");

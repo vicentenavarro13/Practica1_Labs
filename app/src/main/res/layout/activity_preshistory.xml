@@ -9,22 +9,37 @@
     android:background="#0C191D">
 
 
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="81dp"
+        android:layout_height="37dp"
+        android:backgroundTint="#3798A3"
+        android:fontFamily="@font/exo"
+        android:text="Salir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_marginTop="16dp"
+        tools:ignore="MissingConstraints" />
+
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="419dp"
-        android:layout_height="64dp"
+        android:layout_width="412dp"
+        android:layout_height="53dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#8AD1D6"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="281dp"
-        android:layout_height="53dp"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
         app:srcCompat="@drawable/mortezlogo"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="56dp"
@@ -34,7 +49,7 @@
         android:id="@+id/questionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="72dp"
         android:fontFamily="@font/exo"
         android:text="Pregunta"
         android:textColor="#FFFFFF"
@@ -46,13 +61,13 @@
 
     <ImageView
         android:id="@+id/questionImageView"
-        android:layout_width="400dp"
-        android:layout_height="120dp"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="200dp"
         android:visibility="gone" />
 
 
@@ -60,12 +75,11 @@
         android:id="@+id/option1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="124dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/exo"
         android:text="Opción 1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/questionText" />
 
@@ -111,7 +125,7 @@
         android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="152dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/exo"
         android:text="Confirmar"
@@ -144,7 +158,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

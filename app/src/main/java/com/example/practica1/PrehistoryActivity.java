@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class PrehistoryActivity extends AppCompatActivity {
     private TextView questionText, feedbackText, scoreText;
-    private Button option1, option2, option3, option4;
+    private Button option1, option2, option3, option4, exit;
     private Button confirmButton;
     private ImageView questionImageView;
 
@@ -69,6 +69,7 @@ public class PrehistoryActivity extends AppCompatActivity {
         option4 = findViewById(R.id.option4);
         confirmButton = findViewById(R.id.confirmButton);
         questionImageView = findViewById(R.id.questionImageView);
+        exit = findViewById(R.id.exit);
 
         loadQuestion();
 
@@ -114,6 +115,15 @@ public class PrehistoryActivity extends AppCompatActivity {
                 }
             }
         });
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent intent = new Intent(PrehistoryActivity.this, LevelsActivity.class);
+                    startActivity(intent);
+                }
+        });
+
     }
 
     private void loadQuestion() {
@@ -232,4 +242,6 @@ public class PrehistoryActivity extends AppCompatActivity {
             }
         }, 1000);  // 1 segundo de retraso
     }
+
+
 }
