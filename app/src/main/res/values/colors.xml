@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="darkBlue">#0C191D</color>
     <color name="lightBlue">#8AD1D6</color>
+    <color name="colorButtonNormal">#365E69</color> <!-- Color original del botón -->
+    <color name="colorButtonPressed">#4A8C9E</color> <!-- Color más claro para efecto de "hover" -->
+    <color name="colorButtonDisabled">#AAAAAA</color> <!-- Color para el botón deshabilitado -->
+    <color name="colorButtonMask">#FFFFFF</color> <!-- Máscara opcional, generalmente blanco o transparente -->
 </resources>

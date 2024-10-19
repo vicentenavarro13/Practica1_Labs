@@ -9,7 +9,7 @@
     <!-- Toolbar superior -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="393dp"
+        android:layout_width="0dp"
         android:layout_height="85dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#8AD1D6"
@@ -19,39 +19,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Toolbar inferior -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:backgroundTint="#8AD1D6"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <!-- Logo ImageView -->
 
     <!-- Título TEMAS -->
 
+    <!-- ListView para los botones -->
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="259dp"
         android:layout_height="87dp"
+        android:layout_marginEnd="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/mortezlogo"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="-15dp" />
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
 
-    <!-- Botón Prehistoria -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/exo"
         android:text="TEMAS"
         android:textColor="@color/white"
@@ -60,63 +48,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView2" />
 
+    <!-- Botón para desplegar los niveles -->
     <Button
-        android:id="@+id/prehistory"
-        android:layout_width="214dp"
-        android:layout_height="49dp"
-        android:text="Prehistoria"
+        android:id="@+id/expandButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#365E69"
         android:fontFamily="@font/exo"
-        app:layout_constraintTop_toBottomOf="@id/textView"
+        android:text="Niveles"
+        android:background="@drawable/button_riple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <!-- ListView para los botones (inicialmente oculto) -->
+    <ListView
+        android:id="@+id/levelsListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/expandButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón Edad Antigua -->
-    <Button
-        android:id="@+id/buttonAncientAge"
-        android:layout_width="214dp"
-        android:layout_height="49dp"
-        android:backgroundTint="#365E69"
-        android:fontFamily="@font/exo"
-        android:text="Edad Antigua"
-        app:layout_constraintTop_toBottomOf="@id/prehistory"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Botón Edad Media -->
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="214dp"
-        android:layout_height="49dp"
-        android:backgroundTint="#365E69"
-        android:fontFamily="@font/exo"
-        android:text="Edad Media"
-        app:layout_constraintTop_toBottomOf="@id/buttonAncientAge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Botón Edad Moderna -->
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="214dp"
-        android:layout_height="49dp"
-        android:backgroundTint="#365E69"
-        android:fontFamily="@font/exo"
-        android:text="Edad Moderna"
-        app:layout_constraintTop_toBottomOf="@id/button3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Botón Edad Contemporánea -->
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="214dp"
-        android:layout_height="49dp"
-        android:backgroundTint="#365E69"
-        android:fontFamily="@font/exo"
-        android:text="Edad Contemporánea"
-        app:layout_constraintTop_toBottomOf="@id/button4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
