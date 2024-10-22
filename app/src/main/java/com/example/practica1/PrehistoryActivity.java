@@ -180,7 +180,7 @@ public class PrehistoryActivity extends AppCompatActivity {
 
     private void endGame() {
         // Crear el Intent para ir a ReviewActivity
-        Intent intent = new Intent(PrehistoryActivity.this, ReviewActivity.class);
+        Intent intent = new Intent(PrehistoryActivity.this, ResultActivity.class);
 
         // Convertir las respuestas correctas a un array de String para enviarlas
         String[] correctAnswersArray = new String[correctAnswers.length];
@@ -199,10 +199,7 @@ public class PrehistoryActivity extends AppCompatActivity {
         }
 
         // Pasar la puntuación, preguntas y respuestas seleccionadas/correctas a ReviewActivity
-        intent.putExtra("FINAL_SCORE", score);
-        intent.putExtra("QUESTIONS", questions);
-        intent.putExtra("SELECTED_ANSWERS", selectedAnswersArray);  // Pasar las respuestas seleccionadas
-        intent.putExtra("CORRECT_ANSWERS", correctAnswersArray);    // Pasar las respuestas correctas
+        intent.putExtra("score", score);
 
         // Iniciar la nueva actividad
         startActivity(intent);

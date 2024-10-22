@@ -26,9 +26,7 @@ public class LevelsActivity extends AppCompatActivity {
         List<String> levels = new ArrayList<>();
         levels.add("Prehistoria");
         levels.add("Edad Antigua");
-        levels.add("Edad Media");
-        levels.add("Edad Moderna");
-        levels.add("Edad Contemporánea");
+
 
 
         LevelAdapter adapter = new LevelAdapter(this, levels);

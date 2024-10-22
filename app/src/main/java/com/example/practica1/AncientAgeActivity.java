@@ -1,6 +1,7 @@
 package com.example.practica1;
 
 import android.os.Bundle;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,8 @@ public class AncientAgeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_ancient_age);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -23,9 +26,5 @@ public class AncientAgeActivity extends AppCompatActivity {
             return insets;
         });
 
-        AnswersViewModel answersViewModel = new ViewModelProvider(this).get(AnswersViewModel.class);
-
-        int[] array = {-1, -1, -1, -1};
-        answersViewModel.setArray(array);
     }
 }
