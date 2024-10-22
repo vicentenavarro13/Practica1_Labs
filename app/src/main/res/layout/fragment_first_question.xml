@@ -64,7 +64,7 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
         <ImageView
-            android:id="@+id/questionImage"
+            android:id="@+id/correctionText"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             tools:layout_editor_absoluteX="56dp"
@@ -80,7 +80,7 @@
             android:layout_marginTop="70dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/questionImage">
+            app:layout_constraintTop_toBottomOf="@+id/correctionText">
 
             <RadioButton
                 android:id="@+id/radio_1"

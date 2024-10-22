@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -27,11 +28,16 @@ public class FourthQuestion extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private int optionSelected = -1;
+    private int[] optionSelected = {0, 0, 0, 0};
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    CheckBox option1;
+    CheckBox option2;
+    CheckBox option3;
+    CheckBox option4;
 
     public FourthQuestion() {
         // Required empty public constructor
@@ -68,16 +74,17 @@ public class FourthQuestion extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_first_question, container, false);
+        View view = inflater.inflate(R.layout.fragment_fourth_question, container, false);
 
         TextView questionText = view.findViewById(R.id.questionText);
-        questionText.setText("¿Cuál de los siguientes fue un dios importante en la mitología egipcia?");
+        questionText.setText("¿Cuál de los siguientes fueron dioses en la mitología egipcia?");
 
 
-        RadioButton option1 = view.findViewById(R.id.radio_1);
-        RadioButton option2 = view.findViewById(R.id.radio_2);
-        RadioButton option3 = view.findViewById(R.id.radio_3);
-        RadioButton option4 = view.findViewById(R.id.radio_4);
+        option1 = view.findViewById(R.id.checkBox);
+        option2 = view.findViewById(R.id.checkBox2);
+        option3 = view.findViewById(R.id.checkBox3);
+        option4 = view.findViewById(R.id.checkBox4);
+
         Button exitButton = view.findViewById(R.id.exit);
 
 
@@ -91,68 +98,67 @@ public class FourthQuestion extends Fragment {
 
         option1.setText("Zeus");
         option2.setText("Osiris");
-        option3.setText("Ares");
+        option3.setText("Atenea");
         option4.setText("Neptuno");
 
-        AnswersViewModel viewModel = new ViewModelProvider(requireActivity()).get(AnswersViewModel.class);
-        viewModel.getArray().observe(getViewLifecycleOwner(), new Observer<int[]>() {
-            @Override
-            public void onChanged(int[] answers) {
-                if (answers != null) {
-                    // Acceder a una posición específica, por ejemplo, la posición 2
-                    int option = answers[3];
-                    switch (option){
-                        case 1:
-                            option1.setChecked(true);
-                            break;
-                        case 2:
-                            option2.setChecked(true);
-                            break;
-                        case 3:
-                            option3.setChecked(true);
-                            break;
-                        case 4:
-                            option4.setChecked(true);
-                            break;
-                    }
-                }
-            }
-        });
+        TextView feedbackText = view.findViewById(R.id.correctionText);
 
         Button back_btn = view.findViewById(R.id.buttonBack);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.actualizarElemento(3,optionSelected);
-                Navigation.findNavController(view).navigate(R.id.thirdQuestion);
+                boolean goodAnswer = checkAnswer();
+                if (goodAnswer){
+                    feedbackText.setText("Correcto");
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                } else {
+                    feedbackText.setText("Incorrecto");
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                }
             }
         });
 
         option1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 1;
+                if(!isChecked){
+                    optionSelected[0] = 0;
+                }else{
+                    optionSelected[0] = 1;
+                }
             }
         });
 
         option2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 2;
+                if(!isChecked){
+                    optionSelected[1] = 0;
+                }else{
+                    optionSelected[1] = 1;
+                }
             }
         });
 
         option3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 3;
+                if(!isChecked){
+                    optionSelected[2] = 0;
+                }else{
+                    optionSelected[2] = 1;
+                }
             }
         });
 
         option4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 4;
+                if(!isChecked){
+                    optionSelected[3] = 0;
+                }else{
+                    optionSelected[3] = 1;
+                }
             }
         });
 
@@ -162,5 +168,15 @@ public class FourthQuestion extends Fragment {
 
 
         return view;
+    }
+
+    private boolean checkAnswer(){
+        if (optionSelected[1] == 1 || optionSelected[3] == 1){
+            return false;
+        } else if (optionSelected[0] == 1 && optionSelected[2] == 1) {
+            return true;
+        } else{
+            return false;
+        }
     }
 }

@@ -4,16 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -68,16 +65,13 @@ public class SecondQuestion extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_first_question, container, false);
+        View view = inflater.inflate(R.layout.fragment_second_question, container, false);
 
         TextView questionText = view.findViewById(R.id.questionText);
-        questionText.setText("¿Cuál fue el sistema de leyes más famoso del Imperio Romano?");
+        questionText.setText("¿Cuál de estas construcciones se encuentra en egipto?");
 
 
-        RadioButton option1 = view.findViewById(R.id.radio_1);
-        RadioButton option2 = view.findViewById(R.id.radio_2);
-        RadioButton option3 = view.findViewById(R.id.radio_3);
-        RadioButton option4 = view.findViewById(R.id.radio_4);
+
         Button exitButton = view.findViewById(R.id.exit);
 
 
@@ -89,82 +83,56 @@ public class SecondQuestion extends Fragment {
             }
         });
 
-        option1.setText("Código de Hammurabi");
-        option2.setText("Derecho Canónico");
-        option3.setText("Leyes de Draco");
-        option4.setText("Ley de las Doce Tablas");
 
-        AnswersViewModel viewModel = new ViewModelProvider(requireActivity()).get(AnswersViewModel.class);
-        viewModel.getArray().observe(getViewLifecycleOwner(), new Observer<int[]>() {
-            @Override
-            public void onChanged(int[] answers) {
-                if (answers != null) {
-                    // Acceder a una posición específica, por ejemplo, la posición 2
-                    int option = answers[1];
-                    switch (option){
-                        case 1:
-                            option1.setChecked(true);
-                            break;
-                        case 2:
-                            option2.setChecked(true);
-                            break;
-                        case 3:
-                            option3.setChecked(true);
-                            break;
-                        case 4:
-                            option4.setChecked(true);
-                            break;
-                    }
-                }
-            }
-        });
 
         Button next_btn = view.findViewById(R.id.buttonNext);
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.actualizarElemento(1,optionSelected);
+                //viewModel.actualizarElemento(1,optionSelected);
                 Navigation.findNavController(view).navigate(R.id.thirdQuestion);
             }
         });
 
-        Button back_btn = view.findViewById(R.id.buttonBack);
-        back_btn.setOnClickListener(new View.OnClickListener() {
+        ImageButton image1 = view.findViewById(R.id.answer1);
+        ImageButton image2 = view.findViewById(R.id.answer2);
+        ImageButton image3 = view.findViewById(R.id.answer3);
+        ImageButton image4 = view.findViewById(R.id.answer4);
+
+        TextView feedbackText = view.findViewById(R.id.correctionText);
+
+        image1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                viewModel.actualizarElemento(1,optionSelected);
-                Navigation.findNavController(view).navigate(R.id.firstQuestion);
+                feedbackText.setText("Incorrecto");
+                feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
             }
         });
 
-
-        option1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        image2.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 1;
+            public void onClick(View v) {
+                feedbackText.setText("Incorrecto");
+                feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
             }
         });
 
-        option2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        image3.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 2;
+            public void onClick(View v) {
+                feedbackText.setText("Incorrecto");
+                feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
             }
         });
 
-        option3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        image4.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 3;
+            public void onClick(View v) {
+                feedbackText.setText("Corecto");
+                feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
             }
         });
 
-        option4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 4;
-            }
-        });
 
 
 

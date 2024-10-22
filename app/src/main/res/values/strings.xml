@@ -4,4 +4,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back">Volver</string>
     <string name="next">Siguiente</string>
+    <string-array name="spinner_options">
+        <item>Seleccione una respuesta</item>
+        <item>Con la caída del Imperio Romano de Occidente</item>
+        <item>Con la invención de la imprenta</item>
+        <item>Con el nacimiento de Cristo</item>
+        <item>Con el descubrimiento de América</item>
+    </string-array>
 </resources>

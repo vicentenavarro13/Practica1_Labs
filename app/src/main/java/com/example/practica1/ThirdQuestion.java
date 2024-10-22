@@ -11,10 +11,14 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,17 +72,61 @@ public class ThirdQuestion extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_first_question, container, false);
+        View view = inflater.inflate(R.layout.fragment_third_question, container, false);
 
         TextView questionText = view.findViewById(R.id.questionText);
         questionText.setText("¿Cómo terminó la Edad Antigua según la mayoría de los historiadores?");
 
+        Spinner spinner = view.findViewById(R.id.spinner);
 
-        RadioButton option1 = view.findViewById(R.id.radio_1);
-        RadioButton option2 = view.findViewById(R.id.radio_2);
-        RadioButton option3 = view.findViewById(R.id.radio_3);
-        RadioButton option4 = view.findViewById(R.id.radio_4);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(),
+                R.array.spinner_options, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
+
         Button exitButton = view.findViewById(R.id.exit);
+        TextView feedbackText = view.findViewById(R.id.correctionText);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        // Acción para Opción 1
+                        feedbackText.setText("Incorrecto");
+                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        break;
+                    case 1:
+                        // Acción para Opción 1
+                        feedbackText.setText("Correcto");
+                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                        break;
+                    case 2:
+                        // Acción para Opción 2
+                        feedbackText.setText("Incorrecto");
+                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        break;
+                    case 3:
+                        // Acción para Opción 3
+                        feedbackText.setText("Incorrecto");
+                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        break;
+                    case 4:
+                        // Acción para Opción 4
+                        feedbackText.setText("Incorrecto");
+                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        break;
+            }
+
+        }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
 
         exitButton.setOnClickListener(new View.OnClickListener() {
@@ -89,41 +137,11 @@ public class ThirdQuestion extends Fragment {
             }
         });
 
-        option1.setText("Con la caída del Imperio Romano de Occidente");
-        option2.setText("Con la invención de la imprenta");
-        option3.setText("Con el nacimiento de Cristo");
-        option4.setText("Con el descubrimiento de América");
-
-        AnswersViewModel viewModel = new ViewModelProvider(requireActivity()).get(AnswersViewModel.class);
-        viewModel.getArray().observe(getViewLifecycleOwner(), new Observer<int[]>() {
-            @Override
-            public void onChanged(int[] answers) {
-                if (answers != null) {
-                    // Acceder a una posición específica, por ejemplo, la posición 2
-                    int option = answers[2];
-                    switch (option){
-                        case 1:
-                            option1.setChecked(true);
-                            break;
-                        case 2:
-                            option2.setChecked(true);
-                            break;
-                        case 3:
-                            option3.setChecked(true);
-                            break;
-                        case 4:
-                            option4.setChecked(true);
-                            break;
-                    }
-                }
-            }
-        });
-
         Button next_btn = view.findViewById(R.id.buttonNext);
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.actualizarElemento(2,optionSelected);
+
                 Navigation.findNavController(view).navigate(R.id.fourthQuestion);
             }
         });
@@ -132,39 +150,13 @@ public class ThirdQuestion extends Fragment {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.actualizarElemento(2,optionSelected);
+
                 Navigation.findNavController(view).navigate(R.id.secondQuestion);
             }
         });
 
 
-        option1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 1;
-            }
-        });
 
-        option2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 2;
-            }
-        });
-
-        option3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 3;
-            }
-        });
-
-        option4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                optionSelected = 4;
-            }
-        });
 
 
 
