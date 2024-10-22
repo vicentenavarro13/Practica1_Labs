@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back">Volver</string>
     <string name="next">Siguiente</string>
+    <string name="check">Corregir</string>
     <string-array name="spinner_options">
         <item>Seleccione una respuesta</item>
         <item>Con la caída del Imperio Romano de Occidente</item>

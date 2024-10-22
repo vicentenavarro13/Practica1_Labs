@@ -25,6 +25,7 @@ public class SecondQuestion extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private int optionSelected = -1;
+    private int score;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,9 +68,13 @@ public class SecondQuestion extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_second_question, container, false);
 
+        if (getArguments() != null) {
+            score = getArguments().getInt("score"); // Obtener el entero
+        }
+
         TextView questionText = view.findViewById(R.id.questionText);
         questionText.setText("¿Cuál de estas construcciones se encuentra en egipto?");
-
+        TextView feedbackText = view.findViewById(R.id.correctionText);
 
 
         Button exitButton = view.findViewById(R.id.exit);
@@ -86,11 +91,32 @@ public class SecondQuestion extends Fragment {
 
 
         Button next_btn = view.findViewById(R.id.buttonNext);
+        next_btn.setEnabled(false);
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //viewModel.actualizarElemento(1,optionSelected);
-                Navigation.findNavController(view).navigate(R.id.thirdQuestion);
+                Bundle bundle = new Bundle();
+                bundle.putInt("score", score);
+
+                Navigation.findNavController(view).navigate(R.id.thirdQuestion, bundle);
+            }
+        });
+
+        Button check_button = view.findViewById(R.id.buttonCheck);
+        check_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(optionSelected == 4){
+                    score += 3;
+                    feedbackText.setText("Correcto. Puntuación = " + score);
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                } else{
+                    score -= 2;
+                    feedbackText.setText("Incorrecto. Puntuación = " + score);
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                }
+                next_btn.setEnabled(true);
+                check_button.setEnabled(false);
             }
         });
 
@@ -99,37 +125,32 @@ public class SecondQuestion extends Fragment {
         ImageButton image3 = view.findViewById(R.id.answer3);
         ImageButton image4 = view.findViewById(R.id.answer4);
 
-        TextView feedbackText = view.findViewById(R.id.correctionText);
 
         image1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                feedbackText.setText("Incorrecto");
-                feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                optionSelected = 1;
             }
         });
 
         image2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                feedbackText.setText("Incorrecto");
-                feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                optionSelected = 2;
             }
         });
 
         image3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                feedbackText.setText("Incorrecto");
-                feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                optionSelected = 3;
             }
         });
 
         image4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                feedbackText.setText("Corecto");
-                feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                optionSelected = 4;
             }
         });
 

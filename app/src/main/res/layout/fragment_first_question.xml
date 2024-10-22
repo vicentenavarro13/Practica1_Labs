@@ -63,14 +63,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <ImageView
+        <TextView
             android:id="@+id/correctionText"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
-            tools:layout_editor_absoluteX="56dp"
-            tools:layout_editor_absoluteY="4dp"
+            android:layout_height="70dp"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/exo"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/questionText" />
 
         <RadioGroup
@@ -118,12 +121,12 @@
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
         <Button
-            android:id="@+id/buttonBack"
+            android:id="@+id/buttonCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
             android:layout_marginTop="68dp"
-            android:text="@string/back"
+            android:text="@string/check"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 

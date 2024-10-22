@@ -89,17 +89,18 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <Button
-            android:id="@+id/buttonBack"
+            android:id="@+id/buttonCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
             android:layout_marginTop="68dp"
-            android:text="@string/back"
+            android:text="@string/check"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageButton
             android:id="@+id/answer1"
+            android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_marginStart="30dp"
@@ -111,6 +112,7 @@
 
         <ImageButton
             android:id="@+id/answer2"
+            android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_marginTop="60dp"
@@ -122,6 +124,7 @@
 
         <ImageButton
             android:id="@+id/answer3"
+            android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_marginStart="20dp"
@@ -133,6 +136,7 @@
 
         <ImageButton
             android:id="@+id/answer4"
+            android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_marginTop="32dp"

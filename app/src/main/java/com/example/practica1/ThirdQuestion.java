@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -14,11 +12,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +27,7 @@ public class ThirdQuestion extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private int optionSelected = -1;
+    private int score;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -74,6 +70,10 @@ public class ThirdQuestion extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_third_question, container, false);
 
+        if (getArguments() != null) {
+            score = getArguments().getInt("score"); // Obtener el entero
+        }
+
         TextView questionText = view.findViewById(R.id.questionText);
         questionText.setText("¿Cómo terminó la Edad Antigua según la mayoría de los historiadores?");
 
@@ -94,28 +94,23 @@ public class ThirdQuestion extends Fragment {
                 switch (position) {
                     case 0:
                         // Acción para Opción 1
-                        feedbackText.setText("Incorrecto");
-                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        optionSelected = 1;
                         break;
                     case 1:
                         // Acción para Opción 1
-                        feedbackText.setText("Correcto");
-                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                        optionSelected = 2;
                         break;
                     case 2:
                         // Acción para Opción 2
-                        feedbackText.setText("Incorrecto");
-                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        optionSelected = 3;
                         break;
                     case 3:
                         // Acción para Opción 3
-                        feedbackText.setText("Incorrecto");
-                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        optionSelected = 4;
                         break;
                     case 4:
                         // Acción para Opción 4
-                        feedbackText.setText("Incorrecto");
-                        feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        optionSelected = 5;
                         break;
             }
 
@@ -138,20 +133,32 @@ public class ThirdQuestion extends Fragment {
         });
 
         Button next_btn = view.findViewById(R.id.buttonNext);
+        next_btn.setEnabled(false);
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("score", score);
 
-                Navigation.findNavController(view).navigate(R.id.fourthQuestion);
+                Navigation.findNavController(view).navigate(R.id.fourthQuestion, bundle);
             }
         });
 
-        Button back_btn = view.findViewById(R.id.buttonBack);
-        back_btn.setOnClickListener(new View.OnClickListener() {
+        Button check_button = view.findViewById(R.id.buttonCheck);
+        check_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Navigation.findNavController(view).navigate(R.id.secondQuestion);
+                if(optionSelected == 2){
+                    score += 3;
+                    feedbackText.setText("Correcto. Puntuación = " + score);
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                } else{
+                    score -= 2;
+                    feedbackText.setText("Incorrecto. Puntuación = " + score);
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                }
+                next_btn.setEnabled(true);
+                check_button.setEnabled(false);
             }
         });
 

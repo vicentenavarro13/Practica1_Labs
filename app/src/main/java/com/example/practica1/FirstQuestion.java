@@ -29,7 +29,7 @@ public class FirstQuestion extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private int optionSelected = -1;
-    private int answ[];
+    private int score;
 
 
 
@@ -67,7 +67,6 @@ public class FirstQuestion extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
@@ -76,7 +75,7 @@ public class FirstQuestion extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first_question, container, false);
 
-        AnswersViewModel viewModel = new ViewModelProvider(requireActivity()).get(AnswersViewModel.class);
+
 
 
 
@@ -104,37 +103,37 @@ public class FirstQuestion extends Fragment {
         option3.setText("Augusto");
         option4.setText("Nerón");
 
-        viewModel.getArray().observe(getViewLifecycleOwner(), new Observer<int[]>() {
-            @Override
-            public void onChanged(int[] answers) {
-                if (answers != null) {
-                    answ = answers;
-                    // Acceder a una posición específica, por ejemplo, la posición 2
-                    int option = answers[0];
-                    switch (option){
-                    case 1:
-                        option1.setChecked(true);
-                        break;
-                    case 2:
-                        option2.setChecked(true);
-                        break;
-                    case 3:
-                        option3.setChecked(true);
-                        break;
-                    case 4:
-                        option4.setChecked(true);
-                        break;
-                    }
-                }
-            }
-        });
+
 
         Button next_btn = view.findViewById(R.id.buttonNext);
+        next_btn.setEnabled(false);
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.actualizarElemento(0, optionSelected);
-                Navigation.findNavController(view).navigate(R.id.secondQuestion);
+                Bundle bundle = new Bundle();
+                bundle.putInt("score", score);
+
+                Navigation.findNavController(view).navigate(R.id.secondQuestion, bundle);
+            }
+        });
+
+        Button check_button = view.findViewById(R.id.buttonCheck);
+        TextView feedbackText = view.findViewById(R.id.correctionText);
+        check_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(optionSelected == 3){
+                    score += 3;
+                    feedbackText.setText("Correcto. Puntuación = " + score);
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                } else{
+                    score -= 2;
+                    feedbackText.setText("Incorrecto. Puntuación = " + score);
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                }
+
+                next_btn.setEnabled(true);
+                check_button.setEnabled(false);
             }
         });
 

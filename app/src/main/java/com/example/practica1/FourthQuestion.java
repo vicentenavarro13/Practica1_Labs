@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 /**
@@ -29,6 +25,7 @@ public class FourthQuestion extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private int[] optionSelected = {0, 0, 0, 0};
+    private int score;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -76,6 +73,10 @@ public class FourthQuestion extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fourth_question, container, false);
 
+        if (getArguments() != null) {
+            score = getArguments().getInt("score"); // Obtener el entero
+        }
+
         TextView questionText = view.findViewById(R.id.questionText);
         questionText.setText("¿Cuál de los siguientes fueron dioses en la mitología egipcia?");
 
@@ -103,7 +104,7 @@ public class FourthQuestion extends Fragment {
 
         TextView feedbackText = view.findViewById(R.id.correctionText);
 
-        Button back_btn = view.findViewById(R.id.buttonBack);
+        Button back_btn = view.findViewById(R.id.buttonCheck);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,7 +163,35 @@ public class FourthQuestion extends Fragment {
             }
         });
 
+        Button next_btn =  view.findViewById(R.id.buttonNext);
+        next_btn.setEnabled(false);
+        next_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+
+
+        Button check_button = view.findViewById(R.id.buttonCheck);
+        check_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean good_answer = checkAnswer();
+                if(good_answer){
+                    score += 3;
+                    feedbackText.setText("Correcto. Puntuación = " + score);
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                } else{
+                    score -= 2;
+                    feedbackText.setText("Incorrecto. Puntuación = " + score);
+                    feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                }
+                next_btn.setEnabled(true);
+                check_button.setEnabled(false);
+            }
+        });
 
 
 
