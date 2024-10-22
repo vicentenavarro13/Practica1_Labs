@@ -1,7 +1,9 @@
 package com.example.practica1;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -119,8 +121,19 @@ public class PrehistoryActivity extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(PrehistoryActivity.this, LevelsActivity.class);
-                    startActivity(intent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(PrehistoryActivity.this, R.style.CustomAlertDialog);
+                builder.setTitle("Confirmación")
+                        .setMessage("¿Estás seguro de que quieres salir?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(PrehistoryActivity.this, LevelsActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+
+
                 }
         });
 

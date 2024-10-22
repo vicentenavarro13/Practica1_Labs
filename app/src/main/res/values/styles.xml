@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo personalizado para AlertDialog -->
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Cambiar el color del título -->
+        <item name="colorAccent">#FFFFFF</item>
+        <!-- Cambiar el fondo del diálogo -->
+        <item name="android:background">#3798A3</item>
+
+        <!-- Cambiar el texto del título -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <!-- Cambiar el texto del mensaje -->
+        <item name="android:textColorSecondary">#000000</item>
+
+        <!-- Cambiar la fuente del título, mensaje y botones -->
+        <item name="android:fontFamily">@font/exo</item>
+
+        <!-- Cambiar el color de los botones (tendrás que personalizarlos en código) -->
+        <item name="android:buttonTint">#284851</item>
+    </style>
+</resources>
