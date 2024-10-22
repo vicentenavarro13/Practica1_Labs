@@ -17,14 +17,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/reviewButton" />
+        app:layout_constraintBottom_toTopOf="@id/exitButton" />
 
 
     <Button
-        android:id="@+id/reviewButton"
+        android:id="@+id/exitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Revisión"
+        android:text="Salir"
         app:layout_constraintTop_toBottomOf="@id/scoreTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

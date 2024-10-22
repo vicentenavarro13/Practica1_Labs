@@ -1,7 +1,11 @@
 package com.example.practica1;
 
+import static android.app.PendingIntent.getActivity;
+import static java.security.AccessController.getContext;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -15,24 +19,22 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         TextView scoreTextView = findViewById(R.id.scoreTextView);
-        Button reviewButton = findViewById(R.id.reviewButton);
+        Button reviewButton = findViewById(R.id.exitButton);
 
         // Obtener la puntuación desde el Intent
         Intent intent = getIntent();
-        int finalScore = intent.getIntExtra("FINAL_SCORE", 0);
-        String[] questions = getIntent().getStringArrayExtra("QUESTIONS");
-        String[] selectedAnswers = getIntent().getStringArrayExtra("SELECTED_ANSWERS");
-        String[] correctAnswers = getIntent().getStringArrayExtra("CORRECT_ANSWERS");
 
-        scoreTextView.setText("Puntuación final: " + finalScore);
+        int score = intent.getIntExtra("score", 0);
 
-        // Botón para navegar a la pantalla de revisión
-        reviewButton.setOnClickListener(v -> {
-            Intent intent1 = new Intent(ResultActivity.this, ReviewActivity.class);
-            intent1.putExtra("QUESTIONS", questions);
-            intent1.putExtra("SELECTED_ANSWERS", selectedAnswers);
-            intent1.putExtra("CORRECT_ANSWERS", correctAnswers);
-            startActivity(intent1);
+        scoreTextView.setText("Puntuación final: " + score);
+
+        reviewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResultActivity.this, LevelsActivity.class);
+                startActivity(intent);
+                finish();
+            }
         });
     }
 }

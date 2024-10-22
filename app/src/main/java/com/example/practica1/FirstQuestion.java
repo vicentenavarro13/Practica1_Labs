@@ -32,6 +32,7 @@ public class FirstQuestion extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private int optionSelected = -1;
     private int score;
+    private String[] selected_answers = {"","","",""};
 
 
 

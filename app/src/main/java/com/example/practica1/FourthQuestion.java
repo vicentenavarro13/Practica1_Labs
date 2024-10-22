@@ -185,7 +185,9 @@ public class FourthQuestion extends Fragment {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), ResultActivity.class);
+                intent.putExtra("score", score);
+                startActivity(intent);
             }
         });
 
