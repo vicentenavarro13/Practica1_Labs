@@ -80,7 +80,7 @@ public class ThirdQuestion extends Fragment {
         Spinner spinner = view.findViewById(R.id.spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(),
-                R.array.spinner_options, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                R.array.spinner_options, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
